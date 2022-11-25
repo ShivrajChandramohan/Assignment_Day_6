@@ -1,15 +1,25 @@
 #!/bin/bash -x
 
 read -p "Enter number:" N
-
-for((i=2;i<=$N/2;i++))
+for((a=2;a<=N;a++))
 do
-a=$((n%i))
-	if (($a != 0))
-	then
-		i=$((N * 2))
-		N=$((N-1))
-	fi
+        if(( $N % a == 0 ))
+        then
+                count=0
+                for((b=1;b<=$a;b++))
+                do
+                        if(( $a % b == 0 ))
+                        then
+                                ((count++))
+                        fi
+                done
+                if((count == 2))
+                then
+                        echo $a
+                        N=$(($N/$a))
+  		fi
+        fi
 done
 
-	echo $i
+
+
